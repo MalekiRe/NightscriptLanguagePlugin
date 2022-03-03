@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>com.malek.nightscript_language_plugin</id>
+    <name>Nightscript</name>
+    <vendor email="pocmalek@gmail.com" url="http://www.fakecompany.com">Fake Company</vendor>
+
+    <description><![CDATA[
+    Validates Nightscript files
+    Is pretty cool
+    I like it
+    you shoudl use it for modding minecraft
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>ax
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="Nightscript File"
+                  implementationClass="com.malek.nightscript.NightscriptFileType"
+                  fieldName="INSTANCE"
+                  language="Nightscript"
+                  extensions="nightscript"/>
+        <lang.parserDefinition language="Nightscript"
+                               implementationClass="com.malek.nightscript.parsing.NightscriptParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="Nightscript"
+                                       implementationClass="com.malek.nightscript.syntax_highlighting.NightscriptSyntaxHighlighterFactory"/>
+        <completion.contributor language="Nightscript"
+                                implementationClass="com.malek.nightscript.NightscriptCompletionContributor"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>

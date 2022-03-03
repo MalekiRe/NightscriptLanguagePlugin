@@ -1,0 +1,52 @@
+{
+  parserClass="com.malek.nightscript.parsing.NightscriptParser"
+  parserUtilClass="com.malek.nightscript.parsing.NightscriptParserUtil"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Nightscript"
+  psiImplClassSuffix="NightscriptImpl"
+  psiPackage="com.malek.nightscript.parsing"
+  psiImplPackage="com.malek.nightscript.parsing.impl"
+
+  elementTypeHolderClass="com.malek.nightscript.parsing.NightscriptTypes"
+  elementTypeClass="com.malek.nightscript.parsing.NightscriptElementType"
+  tokenTypeClass="com.malek.nightscript.parsing.NightscriptTokenType"
+  psiImplUtilClass="com.malek.nightscript.SimplePsiImplUtil"
+  tokens = [
+       leftcurlybracket = "{"
+       rightcurlybracket = "}"
+       leftparen = "("
+       rightparen = ")"
+       comma = ","
+       semicolon = ";"
+       colon = ":"
+       whenkeyword = "when"
+       floatvar = "regexp:([\d]+|[\d]+\.[\d]*)f"
+       doublevar = "regexp:([\d]+\.[\d]*)"
+       integer = "regexp:[\d]+"
+       string="regexp:('([^'\\]|\\.)*'|\"([^\"\\]|\\\"|\\\'|\\)*\")"
+       leftsquarebracket = "["
+       rightsquarebracket = "]"
+       bool = "regexp:(true|false)"
+       eventlambda = "regexp:(#)\w+" //TODO::properly do this
+       eventdec = "regexp:[A-Z]\w*"
+       identifier = "regexp:((@(\w+)(\.\w+)*) ) | (\w+)" //TODO::DO THIS
+  ]
+}
+
+root ::= FINISHED_COMPILATION
+
+FINISHED_COMPILATION ::= MULTI_EVENT
+
+MULTI_EVENT ::= EVENT [',' MULTI_EVENT]
+EVENT ::= whenkeyword eventdec EVENT_ARGS_LIST leftcurlybracket [MULTI_FUNCTION] rightcurlybracket
+MULTI_FUNCTION ::= FUNCTION semicolon [MULTI_FUNCTION]
+FUNCTION ::= NORMAL_FUNCTION | EVENT_LAMBDA_FUNCTION
+EVENT_LAMBDA_FUNCTION ::= eventlambda leftparen [ARGS] rightparen
+NORMAL_FUNCTION ::= identifier leftparen [ARGS] rightparen
+ARGS ::= FUNCTION_ARG comma ARGS | FUNCTION_ARG
+FUNCTION_ARG ::= FUNCTION | integer | floatvar | doublevar | string | bool
+EVENT_ARGS_LIST ::= leftsquarebracket [EVENT_ARGS] rightsquarebracket
+EVENT_ARGS ::= EVENT_ARG [comma EVENT_ARG]
+EVENT_ARG ::= eventlambda
