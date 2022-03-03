@@ -30,7 +30,7 @@
        rightsquarebracket = "]"
        bool = "regexp:(true|false)"
        eventlambda = "regexp:(#)\w+" //TODO::properly do this
-       eventdec = "regexp:[A-Z]\w*"
+       eventdec = "regexp:[A-Z]\w*(\.\w+)*"
        identifier = "regexp:((@(\w+)(\.\w+)*) ) | (\w+)" //TODO::DO THIS
   ]
 }

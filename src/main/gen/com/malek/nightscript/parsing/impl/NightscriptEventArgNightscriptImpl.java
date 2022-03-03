@@ -34,14 +34,4 @@ public class NightscriptEventArgNightscriptImpl extends ASTWrapperPsiElement imp
     return findNotNullChildByType(EVENTLAMBDA);
   }
 
-  @Override
-  public String getKey() {
-    return SimplePsiImplUtil.getKey(this);
-  }
-
-  @Override
-  public String getValue() {
-    return SimplePsiImplUtil.getValue(this);
-  }
-
 }

@@ -10,8 +10,4 @@ public interface NightscriptEventArg extends PsiElement {
   @NotNull
   PsiElement getEventlambda();
 
-  String getKey();
-
-  String getValue();
-
 }

@@ -31,7 +31,7 @@ INTEGER=[\d]+
 STRING=('([^'\\]|\\.)*'|\"([^\"\\]|\\\"|\\'|\\)*\")
 BOOL=(true|false)
 EVENTLAMBDA=(#)[a-zA-Z_0-9]+
-EVENTDEC=[A-Z][a-zA-Z_0-9]*
+EVENTDEC=[A-Z][a-zA-Z_0-9]*(\.[a-zA-Z_0-9]+)*
 IDENTIFIER=((@([a-zA-Z_0-9]+)(\.[a-zA-Z_0-9]+)*) ) | ([a-zA-Z_0-9]+)
 
 %%

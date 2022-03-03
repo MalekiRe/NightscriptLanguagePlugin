@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static com.malek.nightscript.NightscriptCompletionContributor.builderArrayList;
 
 public class NightscriptIcons {
-    public static final Icon FILE = IconLoader.getIcon("/icons/nightscript_icon.resized.png", NightscriptIcons.class);
+    public static final Icon FILE = IconLoader.getIcon("/icons/nightscript_icon.resized.resized.png", NightscriptIcons.class);
     public static final ArrayList<String> stringList = new ArrayList();
     static {
         InputStream stream = NightscriptIcons.class.getResourceAsStream("/icons/the-file-name.txt");
